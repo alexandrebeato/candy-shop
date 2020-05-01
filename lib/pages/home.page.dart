@@ -1,6 +1,7 @@
+import 'package:candy_shop/pages/product.page.dart';
 import 'package:flutter/material.dart';
 
-class ProductsPage extends StatelessWidget {
+class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -239,80 +240,91 @@ Widget categoryItem(String name, String imagePath) {
 
 Widget productItem(BuildContext context, String name, String imagePath,
     String weight, String price) {
-  return Container(
-    margin: EdgeInsets.all(10),
-    child: Column(
-      children: <Widget>[
-        Container(
-          padding: EdgeInsets.all(15),
-          decoration: BoxDecoration(
-            color: Color.fromARGB(110, 249, 204, 75),
-            borderRadius: BorderRadius.all(Radius.circular(30)),
-          ),
-          width: double.infinity,
-          height: 130,
-          child: Image.asset(
-            imagePath,
-            fit: BoxFit.contain,
-          ),
+  return GestureDetector(
+    onTap: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => ProductPage(name, imagePath, weight, price),
         ),
-        SizedBox(
-          height: 5,
-        ),
-        Container(
-          alignment: Alignment(-1, 0),
-          child: Text(
-            name,
-            style: Theme.of(context).textTheme.title,
-          ),
-        ),
-        Container(
-          alignment: Alignment(-1, 0),
-          child: Text(
-            weight,
-            style: TextStyle(
-              fontSize: Theme.of(context).textTheme.subtitle.fontSize,
-              fontWeight: Theme.of(context).textTheme.subtitle.fontWeight,
-              color: Colors.black54,
+      );
+    },
+    child: Container(
+      margin: EdgeInsets.all(10),
+      child: Column(
+        children: <Widget>[
+          Container(
+            padding: EdgeInsets.all(15),
+            decoration: BoxDecoration(
+              color: Color.fromARGB(110, 249, 204, 75),
+              borderRadius: BorderRadius.all(Radius.circular(30)),
+            ),
+            width: double.infinity,
+            height: 130,
+            child: Image.asset(
+              imagePath,
+              fit: BoxFit.contain,
             ),
           ),
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: <Widget>[
-                Text(
-                  "\$",
-                  style: TextStyle(
-                    fontSize: Theme.of(context).textTheme.subtitle.fontSize,
-                    fontWeight: Theme.of(context).textTheme.subtitle.fontWeight,
-                    color: Theme.of(context).primaryColor,
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.only(left: 5),
-                  child: Text(
-                    price,
-                    style: Theme.of(context).textTheme.title,
-                  ),
-                ),
-              ],
+          SizedBox(
+            height: 5,
+          ),
+          Container(
+            alignment: Alignment(-1, 0),
+            child: Text(
+              name,
+              style: Theme.of(context).textTheme.title,
             ),
-            Container(
-              width: 35,
-              height: 35,
-              decoration: BoxDecoration(
-                color: Theme.of(context).primaryColor,
-                borderRadius: BorderRadius.all(Radius.circular(10)),
+          ),
+          Container(
+            alignment: Alignment(-1, 0),
+            child: Text(
+              weight,
+              style: TextStyle(
+                fontSize: Theme.of(context).textTheme.subtitle.fontSize,
+                fontWeight: Theme.of(context).textTheme.subtitle.fontWeight,
+                color: Colors.black54,
               ),
-              child: Icon(Icons.add),
             ),
-          ],
-        )
-      ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: <Widget>[
+                  Text(
+                    "\$",
+                    style: TextStyle(
+                      fontSize: Theme.of(context).textTheme.subtitle.fontSize,
+                      fontWeight:
+                          Theme.of(context).textTheme.subtitle.fontWeight,
+                      color: Theme.of(context).primaryColor,
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(left: 5),
+                    child: Text(
+                      price,
+                      style: Theme.of(context).textTheme.title,
+                    ),
+                  ),
+                ],
+              ),
+              Container(
+                width: 35,
+                height: 35,
+                decoration: BoxDecoration(
+                  color: Theme.of(context).primaryColor,
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                ),
+                child: Icon(Icons.add),
+              ),
+            ],
+          )
+        ],
+      ),
+      width: 150,
     ),
-    width: 150,
   );
 }

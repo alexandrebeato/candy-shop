@@ -1,4 +1,4 @@
-import 'package:candy_shop/pages/products.page.dart';
+import 'package:candy_shop/pages/home.page.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
         primaryColor: Color(0xFFF9CC4B),
         brightness: Brightness.light,
       ),
-      home: ProductsPage(),
+      home: HomePage(),
     );
   }
 }
